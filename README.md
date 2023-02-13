@@ -1,1 +1,1 @@
-# Dino_game
+Chrome dino game
