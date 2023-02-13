@@ -1,0 +1,32 @@
+#include <Servo.h>
+Servo myservo;
+Servo Servo1;
+int servoPin=9;
+const int ledPin = 13;
+const int ldrPin = A1;
+
+void setup() 
+{
+  Serial.begin(9600);
+  pinMode(ledPin, OUTPUT);
+  pinMode(ldrPin, INPUT);
+  Servo1.attach(servoPin);
+}
+
+void loop() 
+{
+  int ldrStatus = analogRead(ldrPin);
+  if(ldrStatus <= 400)
+  {
+    Servo1.write(90);
+    Serial.print("Its Bright, Turn off the LED:");
+    Serial.println(ldrStatus);
+  }
+  else
+  {
+    Servo1.write(65);
+    Serial.print("Its Dark, Turn on the LED:");
+    Serial.println(ldrStatus);
+  }
+}
+
